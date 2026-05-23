@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aether E-Store - Synthetic Ether Experience</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- Custom Kinetic Reactive Cursor -->
+  <div id="custom-cursor"></div>
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container"></div>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="navbar">
+      <a href="#/" class="logo">
+        <i class="fa-solid fa-cube"></i> AETHER
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#/" class="nav-link" id="nav-home">Catalog</a></li>
+        <li><a href="#/about" class="nav-link" id="nav-about">About</a></li>
+        <li><a href="#/faq" class="nav-link" id="nav-faq">FAQ</a></li>
+        <li><a href="#/contact" class="nav-link" id="nav-contact">Contact</a></li>
+        <li><a href="#/orders" class="nav-link" id="nav-orders" style="display: none;">My Orders</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Shopping Cart Icon Button -->
+        <a href="#/cart" class="cart-icon-btn">
+          <i class="fa-solid fa-cart-shopping fa-lg"></i>
+          <span class="cart-badge" id="cart-badge-count" style="display: none;">0</span>
+        </a>
+
+        <!-- User Authentication Control Panel -->
+        <div class="user-profile" id="user-profile-sec">
+          <a href="#/login" class="btn btn-secondary btn-sm" id="btn-login-nav">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SPA View Mount Container -->
+  <main id="app-root">
+    <!-- Loader or initial content loaded here dynamically -->
+    <div class="loader-container">
+      <div class="loader"></div>
+      <p style="color: var(--text-secondary); margin-top: 1rem;">Loading Aether Store...</p>
+    </div>
+  </main>
+
+  <!-- Redesigned Columnar Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 class="footer-title">Aether</h4>
+        <p style="color: var(--text-secondary); font-size: 0.8rem; text-transform: none; margin-top: 0.75rem;">Premium cybernetic and digital work-space accessories built for high-performance designers.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-title">Store</h4>
+        <ul class="footer-links">
+          <li><a href="#/">Catalog</a></li>
+          <li><a href="#/cart">Shopping Cart</a></li>
+          <li><a href="#/orders">My Orders</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-title">Support</h4>
+        <ul class="footer-links">
+          <li><a href="#/faq">FAQ</a></li>
+          <li><a href="#/contact">Contact Us</a></li>
+          <li><a href="#/shipping-returns">Shipping & Returns</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-title">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#/privacy">Privacy Policy</a></li>
+          <li><a href="#/terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Aether E-Store. Designed for a premium, fast, and secure shopping experience.
+    </div>
+  </footer>
+
+  <!-- SPA Module Entry Point -->
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

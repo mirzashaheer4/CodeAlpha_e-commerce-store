@@ -1,0 +1,13 @@
+{
+  "name": "ecommerce-store-root",
+  "version": "1.0.0",
+  "description": "Root orchestrator for e-commerce project",
+  "scripts": {
+    "dev": "node server/server.js",
+    "start": "node server/server.js",
+    "seed": "node server/seed.js"
+  },
+  "workspaces": [
+    "server"
+  ]
+}
