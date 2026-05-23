@@ -1,5 +1,5 @@
 // Replace with your live Render backend URL in production
-const BACKEND_URL = 'https://aether-api.onrender.com'; 
+const BACKEND_URL = 'https://aether-api.onrender.comhttps://codealpha-e-commerce-store-guhc.onrender.com'; 
 
 const BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? '/api'
