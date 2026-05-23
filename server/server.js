@@ -31,8 +31,13 @@ app.use(helmet({
 }));
 
 // 2. CORS configurations with credentials
+let clientOrigin = process.env.CLIENT_URL || 'http://localhost:5000';
+if (clientOrigin.endsWith('/')) {
+  clientOrigin = clientOrigin.slice(0, -1);
+}
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5000',
+  origin: clientOrigin,
   credentials: true
 }));
 
