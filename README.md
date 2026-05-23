@@ -1,159 +1,357 @@
-# Aether Premium E-Store
+<div align="center">
 
-A complete, production-ready, full-stack e-commerce web application built from scratch. It features a modern, high-end dark Single Page Application (SPA) frontend with glassmorphism aesthetics and an Express/Node.js REST API backend connected to a MongoDB database.
+# ◈ AETHER E-STORE
 
----
+### *Premium Cybernetic Commerce — Built for the Synthetic Age*
 
-## Features
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-%E2%96%B6%20Visit%20Store-81ecff?style=for-the-badge&logo=vercel&logoColor=black)](https://code-alpha-e-commerce-store-server.vercel.app)
+[![Backend API](https://img.shields.io/badge/BACKEND%20API-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://codealpha-e-commerce-store-guhc.onrender.com)
+[![Database](https://img.shields.io/badge/DATABASE-MongoDB%20Atlas-00ED64?style=for-the-badge&logo=mongodb&logoColor=black)](https://cloud.mongodb.com)
 
-- **User Authentication**: Secure registration and login using JWT tokens stored inside secure, HTTP-only cookies. Passwords are encrypted using `bcryptjs`.
-- **Product Catalog**: A fluid, responsive grid display of items populated from MongoDB. Features query support for categories and instant search.
-- **Product Details**: Dynamic details page displaying high-res product images, complete specifications, active stock tracking status, and quantity selections.
-- **Responsive Shopping Cart**: 
-  - **Guests**: Stored locally in `localStorage`.
-  - **Members**: Automatically synced and persisted in MongoDB.
-  - **Merge Logic**: On login, guest cart items are sequentially merged into the user's database cart (combining quantities with stock checks).
-  - Includes a DELETE route to remove specific items completely.
-- **Order Processing**: Checkout flow capturing shipping addresses, checking and decrementing inventory levels, clearing the user's cart, and providing full invoice receipt confirmations.
-- **Admin Management Route**: Restricted product creation, updates, and deletions protected by `adminOnly` middleware.
-- **Backend Protections**: Input validations returning HTTP 422, global error handlers returning structured JSON error schemas, and security headers applied using `helmet`.
+![Node.js](https://img.shields.io/badge/Node.js-v20+-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-4.x-000000?style=flat-square&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose%208-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![Vanilla JS](https://img.shields.io/badge/Frontend-Vanilla%20JS%20SPA-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
+
+</div>
 
 ---
 
-## Directory Structure
+## ◈ Overview
 
-```text
-E-commerce-Store/
-├── client/                      # Frontend SPA
-│   ├── css/
-│   │   └── styles.css           # Modern, responsive stylesheet
-│   ├── js/
-│   │   ├── api.js               # API Fetch wrapper with credentials
-│   │   ├── app.js               # SPA Hash router and view controllers
-│   │   ├── cart.js              # Cart manager (localStorage + API sync)
-│   │   └── ui.js                # Toast notification system module
-│   └── index.html               # SPA Entry HTML shell
-│
-├── server/                      # Backend REST API
-│   ├── config/
-│   │   └── db.js                # Mongoose MongoDB connection
-│   ├── middleware/
-│   │   ├── auth.js              # JWT protector and adminOnly middleware
-│   │   ├── error.js             # Structured JSON error middleware
-│   │   └── validation.js        # Request body validators (HTTP 422)
-│   ├── models/
-│   │   ├── Cart.js              # Mongoose Cart Schema
-│   │   ├── Order.js             # Mongoose Order Schema (with pricing snapshot)
-│   │   ├── Product.js           # Mongoose Product Schema
-│   │   └── User.js              # Mongoose User Schema (with bcrypt hashing)
-│   ├── routes/
-│   │   ├── auth.js              # Auth endpoints (/api/auth)
-│   │   ├── cart.js              # Cart endpoints (/api/cart)
-│   │   ├── order.js             # Order endpoints (/api/orders)
-│   │   └── product.js           # Product endpoints (/api/products)
-│   ├── .env                     # Local configuration parameters (ignored)
-│   ├── .env.example             # Environment variable template
-│   ├── package.json             # Backend server dependency mappings
-│   ├── seed.js                  # Database seeder script
-│   └── server.js                # Express Server startup script
-│
-├── .gitignore                   # Global file ignores
-└── README.md                    # Instructions manual (This file)
+**Aether E-Store** is a production-ready, full-stack e-commerce web application engineered from the ground up. It features a blazing-fast **Single Page Application (SPA)** frontend styled with a premium dark "Void Aesthetic" design, powered by a robust **Node.js + Express REST API** backend, and persisted with **MongoDB Atlas** on the cloud.
+
+The project is deployed across a split-architecture:
+- **Frontend** → Hosted statically on **Vercel** (global CDN)
+- **Backend API** → Hosted on **Render** (persistent Node.js process)
+- **Database** → **MongoDB Atlas** (managed cloud cluster)
+
+---
+
+## ◈ Features
+
+| Category | Feature |
+|---|---|
+| 🔐 **Authentication** | JWT stored in secure `httpOnly` cookies, bcrypt password hashing |
+| 🛍️ **Product Catalog** | Responsive grid, category & text search filtering |
+| 📦 **Product Details** | High-res imagery, live stock tracking, quantity selector |
+| 🛒 **Smart Cart** | Guests use `localStorage`, members sync to MongoDB; merge on login |
+| 💳 **Order Checkout** | Address capture, stock decrement, cart clear, invoice confirmation |
+| 📋 **Order History** | Full order history with status tracking per user |
+| 🛡️ **Admin Panel** | Protected product CRUD — create, update, and delete products |
+| 🔒 **Security** | `helmet` CSP headers, CORS origin restriction, input validation (HTTP 422) |
+| 🌱 **Database Seeding** | One-command seed script — 10 products + test accounts |
+
+---
+
+## ◈ Tech Stack
+
+```
+Frontend                    Backend                     Infrastructure
+──────────────────────      ──────────────────────      ──────────────────────
+HTML5 (Semantic)            Node.js v20+                Vercel (Static CDN)
+Vanilla CSS3                Express.js 4.x              Render (Web Service)
+Vanilla JS (ES Modules)     Mongoose 8.x ODM            MongoDB Atlas
+Hash-based SPA Router       bcryptjs                    Git + GitHub CI/CD
+FontAwesome 6 Icons         jsonwebtoken
+Google Fonts (Inter,        cookie-parser
+  Space Grotesk)            helmet (CSP Headers)
+                            cors
 ```
 
 ---
 
-## Tech Stack
+## ◈ Directory Structure
 
-- **Frontend**: Vanilla HTML5, CSS3 Custom Properties (Dark Theme / Glassmorphism), Vanilla JavaScript ES Modules.
-- **Backend**: Node.js, Express.js web framework.
-- **Database**: MongoDB with Mongoose ODM.
-- **Security**: Password hashing (`bcryptjs`), Session tokens (`jsonwebtoken`), Cookie parsers (`cookie-parser`), HTTP Header hardening (`helmet`), and CORS origins configurations.
+```
+E-commerce-Store/
+│
+├── client/                          # Frontend SPA (served statically via Vercel)
+│   ├── css/
+│   │   └── styles.css               # Design system — Void dark theme, 0px radius
+│   ├── js/
+│   │   ├── api.js                   # Fetch wrapper with httpOnly cookie credentials
+│   │   ├── app.js                   # SPA hash router — all views & controllers
+│   │   ├── cart.js                  # Cart manager (localStorage ↔ MongoDB sync)
+│   │   └── ui.js                    # Toast notification system
+│   └── index.html                   # Shell HTML — custom cursor, navbar, footer
+│
+├── server/                          # Backend REST API (hosted on Render)
+│   ├── config/
+│   │   └── db.js                    # Mongoose connection + error handling
+│   ├── middleware/
+│   │   ├── auth.js                  # protect() + adminOnly() JWT middleware
+│   │   ├── error.js                 # Global JSON error response formatter
+│   │   └── validation.js            # Input validators (HTTP 422 responses)
+│   ├── models/
+│   │   ├── Cart.js                  # Cart schema (userId → [productId, qty])
+│   │   ├── Order.js                 # Order schema with pricing & status snapshot
+│   │   ├── Product.js               # Product schema with stock tracking
+│   │   └── User.js                  # User schema with bcrypt pre-save hook
+│   ├── routes/
+│   │   ├── auth.js                  # /api/auth — register, login, logout, me
+│   │   ├── cart.js                  # /api/cart — CRUD with stock validation
+│   │   ├── order.js                 # /api/orders — checkout + history
+│   │   └── product.js               # /api/products — public + admin routes
+│   ├── .env.example                 # Environment variable template
+│   ├── package.json                 # Server dependencies
+│   ├── seed.js                      # Database seeder script
+│   └── server.js                    # Express app entry point
+│
+├── .gitignore                       # Ignores node_modules/, .env, dist/
+├── package.json                     # Root workspace orchestrator
+└── README.md                        # This file
+```
 
 ---
 
-## Installation & Setup
+## ◈ Quick Start — Local Development
 
-### 1. Prerequisites
-- [Node.js](https://nodejs.org/) installed on your machine.
-- [MongoDB](https://www.mongodb.com/try/download/community) server running locally, or a remote MongoDB Atlas connection string.
+### Prerequisites
+- [Node.js](https://nodejs.org/) v18 or higher
+- A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account (or local MongoDB)
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/mirzashaheer4/CodeAlpha_e-commerce-store.git
+cd CodeAlpha_e-commerce-store
+```
 
 ### 2. Configure Environment Variables
-Inside the `/server` directory, create a `.env` file based on `.env.example`:
+Create a `.env` file inside the `/server` directory, using the provided template:
+```bash
+cp server/.env.example server/.env
+```
+
+Then open `server/.env` and fill in your values:
 ```env
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/ecommerce
-JWT_SECRET=supersecretjwtkey12345!
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/?appName=Cluster0
+JWT_SECRET=your_super_secret_jwt_key_here
 NODE_ENV=development
 CLIENT_URL=http://localhost:5000
 ```
-*(Make sure MongoDB is running on your system at `mongodb://127.0.0.1:27017/`)*
 
-### 3. Install Dependencies
-Install all backend and project dependencies at once by running the standard install command in the root directory:
+### 3. Install All Dependencies
+Run a single install from the **root** directory. NPM Workspaces handles the server packages automatically:
 ```bash
 npm install
 ```
-*(This automatically installs dependencies inside the `/server` workspace using NPM Workspaces)*
 
 ### 4. Seed the Database
-Populate the database with 10 high-quality products and test accounts (standard and administrator) by running the seeder from the root:
+Populate MongoDB with 10 high-quality products and two pre-built test accounts:
 ```bash
 npm run seed
 ```
 
-### 5. Start the Application (Frontend & Server)
-To run the server and serve the frontend client together, execute:
+Expected output:
+```
+Connecting to database...
+Collections cleared.
+Successfully seeded 10 products.
+Created Admin User: admin@ecommerce.com / adminpassword123
+Created Standard User: user@ecommerce.com / userpassword123
+Database seeding completed successfully!
+```
+
+### 5. Start the Development Server
 ```bash
 npm run dev
 ```
-The Express server will launch and host the static SPA client at the same port, displaying:
-```text
-Server running in development mode on port 5000
-MongoDB Connected: 127.0.0.1
+
+The server will start at **`http://localhost:5000`** and serve the SPA frontend directly.
+
+---
+
+## ◈ Test Accounts
+
+> After running `npm run seed`, the following accounts are ready for immediate use:
+
+| Role | Email | Password | Access |
+|---|---|---|---|
+| 👤 **Standard User** | `user@ecommerce.com` | `userpassword123` | Shopping, cart sync, order history |
+| 🛡️ **Administrator** | `admin@ecommerce.com` | `adminpassword123` | All above + product CRUD management |
+
+---
+
+## ◈ REST API Reference
+
+### Authentication — `/api/auth`
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `POST` | `/api/auth/register` | Public | Register a new account |
+| `POST` | `/api/auth/login` | Public | Login and receive JWT cookie |
+| `POST` | `/api/auth/logout` | Public | Clear session cookie |
+| `GET` | `/api/auth/me` | 🔐 Protected | Get current logged-in user profile |
+
+**Register / Login Body:**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "yourpassword"
+}
 ```
-Open your browser and navigate to **`http://localhost:5000`** to experience the Aether Store.
 
 ---
 
-## Seeded Test Accounts
+### Products — `/api/products`
 
-The seeder automatically inserts two accounts for evaluation:
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/products` | Public | Get all products. Supports `?category=` and `?search=` |
+| `GET` | `/api/products/:id` | Public | Get single product by ID |
+| `POST` | `/api/products` | 🛡️ Admin | Create a new product |
+| `PUT` | `/api/products/:id` | 🛡️ Admin | Update a product |
+| `DELETE` | `/api/products/:id` | 🛡️ Admin | Delete a product |
 
-1. **Standard Member Account**:
-   - **Email**: `user@ecommerce.com`
-   - **Password**: `userpassword123`
-   - Use this to test normal shopping flows, persistent database cart synchronization, and viewing order history.
-
-2. **Administrator Account**:
-   - **Email**: `admin@ecommerce.com`
-   - **Password**: `adminpassword123`
-   - Use this to evaluate admin-protected routes, product inventory creation, updating, or deleting operations.
+**Product Body (Admin):**
+```json
+{
+  "name": "Mechanical Keyboard Pro",
+  "description": "Full description of product",
+  "price": 149.99,
+  "stock": 50,
+  "imageUrl": "https://images.unsplash.com/...",
+  "category": "Electronics"
+}
+```
 
 ---
 
-## REST API Documentation
+### Cart — `/api/cart`
 
-### Authentication Routes (`/api/auth`)
-- `POST /register` - Register a new account. Body: `{ name, email, password }`
-- `POST /login` - Login to account. Body: `{ email, password }`
-- `POST /logout` - Logout (clears session cookie).
-- `GET /me` - Get logged-in user profile info (Protected).
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/cart` | 🔐 Protected | Get current user's cart |
+| `POST` | `/api/cart` | 🔐 Protected | Add item or merge quantity |
+| `PUT` | `/api/cart` | 🔐 Protected | Set exact item quantity |
+| `DELETE` | `/api/cart/:productId` | 🔐 Protected | Remove item from cart |
 
-### Product Routes (`/api/products`)
-- `GET /` - Retrieve all products (Public). Supports optional query filters: `?category=Electronics&search=Keyboard`
-- `GET /:id` - Retrieve product details (Public).
-- `POST /` - Create a product (Protected, Admin-only). Body: `{ name, description, price, stock, imageUrl, category }`
-- `PUT /:id` - Update a product (Protected, Admin-only). Body: `{ name, description, price, stock, imageUrl, category }`
-- `DELETE /:id` - Delete a product (Protected, Admin-only).
+---
 
-### Cart Routes (`/api/cart`)
-- `GET /` - Retrieve current user's cart items (Protected).
-- `POST /` - Add / Merge cart item (Protected, Stock-validated). Body: `{ productId, quantity }`
-- `PUT /` - Set item quantity (Protected, Stock-validated). Body: `{ productId, quantity }`
-- `DELETE /:productId` - Remove item from cart entirely (Protected).
+### Orders — `/api/orders`
 
-### Order Routes (`/api/orders`)
-- `POST /` - Process cart checkout and create Order (Protected). Body: `{ shippingAddress: { street, city, zip, country } }`
-- `GET /` - Retrieve logged-in user's order history sorted descending (Protected).
-- `GET /:id` - Fetch order details by ID (Protected, Owner or Admin only).
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `POST` | `/api/orders` | 🔐 Protected | Checkout — creates order, decrements stock, clears cart |
+| `GET` | `/api/orders` | 🔐 Protected | Get full order history for the logged-in user |
+| `GET` | `/api/orders/:id` | 🔐 Protected | Get specific order details (owner or admin) |
+
+**Checkout Body:**
+```json
+{
+  "shippingAddress": {
+    "street": "123 Cyber Lane",
+    "city": "Neo Tokyo",
+    "zip": "90210",
+    "country": "US"
+  }
+}
+```
+
+**Error Response Schema (all endpoints):**
+```json
+{
+  "error": {
+    "message": "Human-readable error description",
+    "code": "ERROR_CODE"
+  }
+}
+```
+
+---
+
+## ◈ Deployment
+
+This project uses a **split-hosting architecture** for production:
+
+```
+User's Browser
+      │
+      ├──── Static Assets (HTML/CSS/JS) ────► Vercel CDN
+      │
+      └──── API Requests (/api/*) ─────────► Render Web Service
+                                                    │
+                                                    └── MongoDB Atlas Cluster
+```
+
+### Deploy Backend → Render
+
+1. Create a **Web Service** on [render.com](https://render.com) from your GitHub repo.
+2. Set the following configuration:
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+3. Add these **Environment Variables**:
+
+| Key | Value |
+|---|---|
+| `NODE_ENV` | `production` |
+| `PORT` | `5000` |
+| `MONGO_URI` | Your MongoDB Atlas connection string |
+| `JWT_SECRET` | A strong random secret phrase |
+| `CLIENT_URL` | Your Vercel frontend URL (no trailing slash) |
+
+### Deploy Frontend → Vercel
+
+1. Import your GitHub repo at [vercel.com](https://vercel.com).
+2. Set **Root Directory** to `client`.
+3. Set **Framework Preset** to `Other`.
+4. Leave **Build Command** and **Install Command** empty.
+5. Click **Deploy**.
+
+> ⚠️ **Important**: After getting your Render URL, update `BACKEND_URL` in `client/js/api.js` and push the change. Vercel will redeploy automatically.
+
+---
+
+## ◈ Environment Variables Reference
+
+```env
+# server/.env
+
+PORT=5000                          # Port the Express server listens on
+MONGO_URI=mongodb+srv://...        # MongoDB Atlas connection string
+JWT_SECRET=your_secret_here        # Secret key for signing JWT tokens
+NODE_ENV=development               # 'development' or 'production'
+CLIENT_URL=http://localhost:5000   # Frontend origin (for CORS & cookie policy)
+```
+
+---
+
+## ◈ Security Architecture
+
+| Layer | Implementation |
+|---|---|
+| **Password Storage** | `bcryptjs` with 12 salt rounds — no plaintext ever stored |
+| **Session Tokens** | JWT signed with `jsonwebtoken`, stored in `httpOnly` + `Secure` cookies |
+| **Cross-Origin** | `cors` restricts API to the whitelisted `CLIENT_URL` origin only |
+| **HTTP Headers** | `helmet` enforces Content Security Policy, XSS protection, HSTS |
+| **Cookie Policy** | `SameSite=Lax` in development; `SameSite=None; Secure` in production |
+| **Input Validation** | All body inputs validated — returns structured HTTP `422` on failure |
+| **Admin Routes** | `adminOnly` middleware gate — non-admin requests receive HTTP `403` |
+
+---
+
+## ◈ Design System
+
+The frontend follows the **"Cyanide Flux" Void Aesthetic**:
+
+- **Background**: `#0e0e0e` (absolute void)
+- **Surface**: `#161616` / `#1c1c1c` (tonal shifts — no borders)
+- **Accent**: `#81ecff` (synthetic cyan)
+- **Border Radius**: `0px` (strictly sharp edges — no rounding)
+- **Typography**: `Space Grotesk` (headings) + `Inter` (body)
+- **Cursor**: Custom reactive "Data-Scrub" animated cursor
+- **Animations**: Smooth fade-in, hover glow pulses, toast slide-ins
+
+---
+
+<div align="center">
+
+Made with ☕ and a lot of `console.log()` debugging.
+
+**[◈ Visit Live Store](https://code-alpha-e-commerce-store-server.vercel.app)** &nbsp;|&nbsp; **[◈ API Base URL](https://codealpha-e-commerce-store-guhc.onrender.com/api/products)**
+
+</div>
